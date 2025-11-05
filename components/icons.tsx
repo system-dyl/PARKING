@@ -38,6 +38,13 @@ export const SettingsIcon: React.FC<IconProps> = ({ className }) => (
   </svg>
 );
 
+export const DatabaseIcon: React.FC<IconProps> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7a8 8 0 0116 0" />
+    </svg>
+);
+
+
 export const LogoIcon: React.FC<IconProps> = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="M7 2H17C17.5523 2 18 2.44772 18 3V9.07143C18 10.9659 16.4659 12.5 14.5714 12.5H9.42857C7.53406 12.5 6 10.9659 6 9.07143V3C6 2.44772 6.44772 2 7 2Z" />

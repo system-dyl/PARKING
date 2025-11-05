@@ -10,48 +10,52 @@ const SettingsView: React.FC = () => {
         </h3>
         <form className="space-y-6">
           <div>
-            <label htmlFor="hourlyRate" className="block text-sm font-medium text-text-secondary mb-2">
-              Tarifa por Hora
+            <label htmlFor="carRate" className="block text-sm font-medium text-text-secondary mb-2">
+              Tarifa Coche (€/hora)
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">$</span>
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">€</span>
               <input
                 type="number"
-                id="hourlyRate"
-                name="hourlyRate"
+                id="carRate"
+                name="carRate"
+                className="w-full bg-primary pl-7 pr-4 py-2 rounded-lg border border-highlight focus:outline-none focus:ring-2 focus:ring-accent"
+                defaultValue="2.50"
+                step="0.01"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="motorcycleRate" className="block text-sm font-medium text-text-secondary mb-2">
+              Tarifa Moto (€/hora)
+            </label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">€</span>
+              <input
+                type="number"
+                id="motorcycleRate"
+                name="motorcycleRate"
+                className="w-full bg-primary pl-7 pr-4 py-2 rounded-lg border border-highlight focus:outline-none focus:ring-2 focus:ring-accent"
+                defaultValue="1.50"
+                step="0.01"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="vanRate" className="block text-sm font-medium text-text-secondary mb-2">
+              Tarifa Furgoneta (€/hora)
+            </label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">€</span>
+              <input
+                type="number"
+                id="vanRate"
+                name="vanRate"
                 className="w-full bg-primary pl-7 pr-4 py-2 rounded-lg border border-highlight focus:outline-none focus:ring-2 focus:ring-accent"
                 defaultValue="3.50"
                 step="0.01"
               />
             </div>
-          </div>
-          <div>
-            <label htmlFor="dailyRate" className="block text-sm font-medium text-text-secondary mb-2">
-              Tarifa Diaria (Máximo)
-            </label>
-            <div className="relative">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">$</span>
-              <input
-                type="number"
-                id="dailyRate"
-                name="dailyRate"
-                className="w-full bg-primary pl-7 pr-4 py-2 rounded-lg border border-highlight focus:outline-none focus:ring-2 focus:ring-accent"
-                defaultValue="25.00"
-                step="0.01"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="gracePeriod" className="block text-sm font-medium text-text-secondary mb-2">
-              Período de Gracia (minutos)
-            </label>
-            <input
-              type="number"
-              id="gracePeriod"
-              name="gracePeriod"
-              className="w-full bg-primary px-4 py-2 rounded-lg border border-highlight focus:outline-none focus:ring-2 focus:ring-accent"
-              defaultValue="15"
-            />
           </div>
           <div className="pt-4">
             <button

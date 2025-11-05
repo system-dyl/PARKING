@@ -6,15 +6,18 @@ import OccupancyMapView from './components/views/OccupancyMapView';
 import VehiclesView from './components/views/VehiclesView';
 import ReportsView from './components/views/ReportsView';
 import SettingsView from './components/views/SettingsView';
+import LoginView from './components/views/LoginView';
+import DatabaseInfoView from './components/views/DatabaseInfoView';
 import { ViewType } from './types';
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentView, setCurrentView] = useState<ViewType>('dashboard');
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as ViewType;
-      if (['dashboard', 'map', 'vehicles', 'reports', 'settings'].includes(hash)) {
+      if (['dashboard', 'map', 'vehicles', 'reports', 'settings', 'database'].includes(hash)) {
         setCurrentView(hash);
       } else {
         setCurrentView('dashboard');
@@ -45,6 +48,8 @@ const App: React.FC = () => {
         return <ReportsView />;
       case 'settings':
         return <SettingsView />;
+      case 'database':
+        return <DatabaseInfoView />;
       default:
         return <DashboardView />;
     }
@@ -56,7 +61,12 @@ const App: React.FC = () => {
     vehicles: 'Vehículos Estacionados',
     reports: 'Informes y Analíticas',
     settings: 'Configuración del Sistema',
+    database: 'Información de la Base de Datos',
   };
+  
+  if (!isAuthenticated) {
+    return <LoginView onLoginSuccess={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className="flex h-screen bg-primary font-sans">

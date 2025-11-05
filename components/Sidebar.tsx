@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ViewType } from '../types';
-import { DashboardIcon, MapIcon, CarIcon, ReportIcon, SettingsIcon, LogoIcon } from './icons';
+import { DashboardIcon, MapIcon, CarIcon, ReportIcon, SettingsIcon, LogoIcon, DatabaseIcon } from './icons';
 
 interface SidebarProps {
   currentView: ViewType;
@@ -33,6 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView }) => {
     { id: 'vehicles', label: 'Vehículos', icon: <CarIcon className="w-6 h-6" /> },
     { id: 'reports', label: 'Informes', icon: <ReportIcon className="w-6 h-6" /> },
     { id: 'settings', label: 'Configuración', icon: <SettingsIcon className="w-6 h-6" /> },
+    { id: 'database', label: 'Base de Datos', icon: <DatabaseIcon className="w-6 h-6" /> },
   ];
 
   return (

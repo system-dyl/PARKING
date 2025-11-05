@@ -22,7 +22,7 @@ const ReportsView: React.FC = () => {
   const handleGenerateSummary = useCallback(async () => {
     if (!reportData) return;
     setIsSummaryLoading(true);
-    const reportJsonString = JSON.stringify(reportData.slice(0, 50).map(v => ({ plate: v.plate, entryTime: v.entryTime.toISOString() })), null, 2);
+    const reportJsonString = JSON.stringify(reportData.slice(0, 50).map(v => ({ plate: v.plate, entryTime: v.entryTime.toISOString(), type: v.type })), null, 2);
     const result = await generateReportSummary(reportJsonString);
     setSummary(result);
     setIsSummaryLoading(false);
@@ -73,6 +73,7 @@ const ReportsView: React.FC = () => {
               <thead className="border-b border-highlight sticky top-0 bg-secondary">
                 <tr>
                   <th className="p-4 text-text-secondary font-semibold">Matrícula</th>
+                  <th className="p-4 text-text-secondary font-semibold">Tipo</th>
                   <th className="p-4 text-text-secondary font-semibold">Hora de Entrada</th>
                 </tr>
               </thead>
@@ -80,6 +81,7 @@ const ReportsView: React.FC = () => {
                 {reportData.map((vehicle, index) => (
                   <tr key={index} className="border-b border-highlight hover:bg-highlight/50">
                     <td className="p-4 font-mono text-text-primary">{vehicle.plate}</td>
+                    <td className="p-4 text-text-secondary">{vehicle.type}</td>
                     <td className="p-4 text-text-secondary">{vehicle.entryTime.toLocaleString()}</td>
                   </tr>
                 ))}

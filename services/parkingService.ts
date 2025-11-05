@@ -1,5 +1,5 @@
 
-import { ParkingSpot, ParkingSpotStatus, Vehicle } from '../types';
+import { ParkingSpot, ParkingSpotStatus, Vehicle, VehicleType } from '../types';
 
 const TOTAL_SPOTS = 80;
 let parkingSpots: ParkingSpot[] = [];
@@ -19,6 +19,11 @@ const generatePlate = (): string => {
   return plate;
 };
 
+const getRandomVehicleType = (): VehicleType => {
+    const types = [VehicleType.Car, VehicleType.Car, VehicleType.Car, VehicleType.Motorcycle, VehicleType.Van]; // Higher chance for cars
+    return types[Math.floor(Math.random() * types.length)];
+}
+
 const initializeData = () => {
   if (parkingSpots.length > 0) return;
 
@@ -28,7 +33,7 @@ const initializeData = () => {
     let vehicle: Vehicle | undefined = undefined;
     if (status === ParkingSpotStatus.Occupied) {
       const entryTime = new Date(Date.now() - Math.floor(Math.random() * 8 * 60 * 60 * 1000)); // up to 8 hours ago
-      vehicle = { plate: generatePlate(), entryTime };
+      vehicle = { plate: generatePlate(), entryTime, type: getRandomVehicleType() };
       parkedVehicles.push(vehicle);
     }
     spots.push({ id: `A-${i.toString().padStart(2, '0')}`, status, vehicle });
@@ -90,7 +95,7 @@ export const generateReport = (): Promise<Vehicle[]> => {
     const count = Math.floor(Math.random() * 100) + 50;
     for (let i = 0; i < count; i++) {
         const entryTime = new Date(Date.now() - Math.floor(Math.random() * 24 * 60 * 60 * 1000));
-        reportVehicles.push({ plate: generatePlate(), entryTime });
+        reportVehicles.push({ plate: generatePlate(), entryTime, type: getRandomVehicleType() });
     }
     return Promise.resolve(reportVehicles.sort((a, b) => b.entryTime.getTime() - a.entryTime.getTime()));
 };

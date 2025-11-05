@@ -5,6 +5,12 @@ export enum ParkingSpotStatus {
   Reserved = 'reserved',
 }
 
+export enum VehicleType {
+    Car = 'Coche',
+    Motorcycle = 'Moto',
+    Van = 'Furgoneta',
+}
+
 export interface ParkingSpot {
   id: string;
   status: ParkingSpotStatus;
@@ -14,6 +20,7 @@ export interface ParkingSpot {
 export interface Vehicle {
   plate: string;
   entryTime: Date;
+  type: VehicleType;
 }
 
-export type ViewType = 'dashboard' | 'map' | 'vehicles' | 'reports' | 'settings';
+export type ViewType = 'dashboard' | 'map' | 'vehicles' | 'reports' | 'settings' | 'database';
