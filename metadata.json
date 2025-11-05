@@ -1,0 +1,5 @@
+{
+  "name": "Sistema de Parking Automatizado",
+  "description": "Una interfaz de panel de control moderna para gestionar un sistema de estacionamiento automatizado. Visualiza la ocupación en tiempo real, gestiona vehículos, genera informes y obtiene resúmenes con IA.",
+  "requestFramePermissions": []
+}
